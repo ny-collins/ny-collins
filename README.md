@@ -8,7 +8,7 @@ I'm a Computer Programming student, planning on studying Java, JavaScript, SQL, 
 
 * 🌍  I'm based in Kasarani, Nairobi
 * ✉️  You can contact me at [mwangicollins391@gmail.com](mailto:mwangicollins391@gmail.com)
-* 🧠  I'm learning JavaScript
+* 🧠  I'm learning JavaScript and Phython
 * 🤝  I'm open to collaborating on Interesting Projects that act as good introduction to the programming world
 * ⚡  ⚡  I love Physics, and together with my love for computers, I'd love to understand them to the atomic level.
 

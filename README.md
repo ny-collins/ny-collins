@@ -48,3 +48,6 @@ src="https://img.shields.io/github/followers/ny-collins?logo=github&style=for-th
 
       <p>Credit: <a href="https://github.com/ny-collins">  Collins Mwangi </a></p>
 
+## 🔥 Fun Section  
+
+![Jokes Card](https://readme-jokes.vercel.app/api)  

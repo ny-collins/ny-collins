@@ -6,6 +6,8 @@ Computer Programming Student
 
 I'm a Computer Programming student, planning on studying Java, JavaScript, SQL, R and Python for my Data Science career. I have a great ambition for learning programming, to better understand computers for my future machine learning endeavors.
 
+<b> <h1>About Me</h1> </b>
+
 * 🌍      I'm based in Kasarani, Nairobi
 * ✉️     You can contact me at [mwangicollins391@gmail.com](mailto:mwangicollins391@gmail.com)
 * 🧠      I'm learning JavaScript and Phython
@@ -45,3 +47,4 @@ src="https://img.shields.io/github/followers/ny-collins?logo=github&style=for-th
     <div width="100%" align="center"><a href="https://github.com/ny-collins/ny-collins" align="left"><img align="left" width="45%" src="https://github-readme-stats.vercel.app/api/pin/?username=ny-collins&repo=ny-collins&title_color=0891b2&text_color=ffffff&icon_color=0891b2&bg_color=14532d&hide_border=true&locale=en" /></a></div><br /><br /><br /><br /><br /><br /><br />
 
       <p>Credit: <a href="https://github.com/ny-collins">  Collins Mwangi </a></p>
+

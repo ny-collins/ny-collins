@@ -6,11 +6,11 @@ Computer Programming Student
 
 I'm a Computer Programming student, planning on studying Java, JavaScript, SQL, R and Python for my Data Science career. I have a great ambition for learning programming, to better understand computers for my future machine learning endeavors.
 
-* 🌍  I'm based in Kasarani, Nairobi
-* ✉️  You can contact me at [mwangicollins391@gmail.com](mailto:mwangicollins391@gmail.com)
-* 🧠  I'm learning JavaScript and Phython
-* 🤝  I'm open to collaborating on Interesting Projects that act as good introduction to the programming world
-* ⚡  ⚡  I love Physics, and together with my love for computers, I'd love to understand them to the atomic level.
+* 🌍      I'm based in Kasarani, Nairobi
+* ✉️     You can contact me at [mwangicollins391@gmail.com](mailto:mwangicollins391@gmail.com)
+* 🧠      I'm learning JavaScript and Phython
+* 🤝      I'm open to collaborating on Interesting Projects that act as good introduction to the programming world
+* ⚡      I love Physics, and together with my love for computers, I'd love to understand them to the atomic level.
 
 <img align="center" alt="Schleidens" src="https://cdn.dribbble.com/users/1059583/screenshots/4171367/coding-freak.gif">
 

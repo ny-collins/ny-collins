@@ -44,11 +44,11 @@ src="https://img.shields.io/github/followers/ny-collins?logo=github&style=for-th
 
      
 
-### ✍️ Random Dev Quote
-![](https://quotes-github-readme.vercel.app/api?type=horizontal&theme=radical)
+      ### ✍️ Random Dev Quote
+      ![](https://quotes-github-readme.vercel.app/api?type=horizontal&theme=radical)
 
-## 🔥 Fun Section  
+      ## 🔥 Fun Section  
 
-![Jokes Card](https://readme-jokes.vercel.app/api)  
+      ![Jokes Card](https://readme-jokes.vercel.app/api)  
  
    <p>Credit: <a href="https://github.com/ny-collins">  Collins Mwangi </a></p>

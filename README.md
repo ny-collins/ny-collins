@@ -6,6 +6,8 @@ Computer Programming Student
 
 I'm a Computer Programming student, planning on studying Java, JavaScript, SQL, R and Python for my Data Science career. I have a great ambition for learning programming, to better understand computers for my future machine learning endeavors.
 
+<p align="left"> <img src="https://komarev.com/ghpvc/?username=ny-collins&label=Profile%20views&color=0e75b6&style=flat" alt="mark61-done" /> </p>
+
 <b> <h1>About Me</h1> </b>
 
 * 🌍      I'm based in Kasarani, Nairobi

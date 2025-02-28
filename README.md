@@ -38,6 +38,8 @@ src="https://img.shields.io/github/followers/ny-collins?logo=github&style=for-th
     
     <a href="http://www.github.com/ny-collins"><img src="https://github-readme-stats.vercel.app/api?username=ny-collins&show_icons=true&hide=&count_private=true&title_color=0891b2&text_color=ffffff&icon_color=0891b2&bg_color=14532d&hide_border=true&show_icons=true" alt="ny-collins's GitHub stats" /></a>
 
+      ![](https://nirzak-streak-stats.vercel.app/?user=ny-collins&theme=dark&hide_border=false)<br/>
+
     <a href="https://github.com/ny-collins">
       <img src="https://github-readme-activity-graph.vercel.app/graph?username=ny-collins&bg_color=1c1917&color=ffffff&line=14b8a6&point=ffffff&area=true&hide_border=true" alt="GitHub Activity Graph" />
     </a>

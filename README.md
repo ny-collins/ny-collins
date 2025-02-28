@@ -53,6 +53,12 @@ src="https://img.shields.io/github/followers/ny-collins?logo=github&style=for-th
 
       ## 🔥 Fun Section  
 
-      ![Jokes Card](https://readme-jokes.vercel.app/api)  
+      ![Jokes Card](https://readme-jokes.vercel.app/api)
+
+    ### 🔝 Top Contributed Repo
+      ![](https://github-contributor-stats.vercel.app/api?username=ny-collins&limit=5&theme=dark&combine_all_yearly_contributions=true)
+      
+      ---
+      [![](https://visitcount.itsvg.in/api?id=ny-collins&icon=0&color=0)](https://visitcount.itsvg.in)
  
    <p>Credit: <a href="https://github.com/ny-collins">  Collins Mwangi </a></p>

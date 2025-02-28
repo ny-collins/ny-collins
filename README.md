@@ -42,8 +42,13 @@ src="https://img.shields.io/github/followers/ny-collins?logo=github&style=for-th
       <img src="https://github-readme-activity-graph.vercel.app/graph?username=ny-collins&bg_color=1c1917&color=ffffff&line=14b8a6&point=ffffff&area=true&hide_border=true" alt="GitHub Activity Graph" />
     </a>
 
-      <p>Credit: <a href="https://github.com/ny-collins">  Collins Mwangi </a></p>
+     
+
+### ✍️ Random Dev Quote
+![](https://quotes-github-readme.vercel.app/api?type=horizontal&theme=radical)
 
 ## 🔥 Fun Section  
 
 ![Jokes Card](https://readme-jokes.vercel.app/api)  
+ 
+   <p>Credit: <a href="https://github.com/ny-collins">  Collins Mwangi </a></p>

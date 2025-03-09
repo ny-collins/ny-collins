@@ -9,7 +9,7 @@ I'm a Computer Programming student, planning on studying Java, JavaScript, SQL, 
 
 <b> <h1>About Me</h1> </b>
 
-* 🌍      I'm based in Kasarani, Nairobi
+* 🌍      I'm based in Nairobi, Kenya
 * ✉️     You can contact me at [mwangicollins391@gmail.com](mailto:mwangicollins391@gmail.com)
 * 🧠      I'm learning JavaScript and Python
 * 🤝      I'm open to collaborating on Interesting Projects that act as good introduction to the programming world

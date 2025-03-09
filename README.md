@@ -1,6 +1,5 @@
 Hi   ![](https://user-images.githubusercontent.com/18350557/176309783-0785949b-9127-417c-8b55-ab5a4333674e.gif) My name is Collins Mwangi
 ======================================================================================================================================
-
 Computer Programming Student
 ----------------------------
 
@@ -16,12 +15,11 @@ I'm a Computer Programming student, planning on studying Java, JavaScript, SQL, 
 * 🤝      I'm open to collaborating on Interesting Projects that act as good introduction to the programming world
 * ⚡      I love Physics, and together with my love for computers, I'd love to understand them to the atomic level.
 
-<a target="_blank" align="center">
-<img align="right" top="500" height="300" width="400" alt="GIF" src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExaDZxZGt6bnZuOGxmcjd3YmlqOG42ZjRoNWw3c2Q3MWxnYnJqaXY4cSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/qgQUggAC3Pfv687qPC/giphy.gif">
-</a>
-
 <a href="https://www.github.com/ny-collins" target="_blank" rel="noreferrer"><img
 src="https://img.shields.io/github/followers/ny-collins?logo=github&style=for-the-badge&color=0891b2&labelColor=14532d" /></a>
+<a target="_blank" align="centre">
+<img align="right" top="500" height="300" width="400" alt="GIF" src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExaDZxZGt6bnZuOGxmcjd3YmlqOG42ZjRoNWw3c2Q3MWxnYnJqaXY4cSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/qgQUggAC3Pfv687qPC/giphy.gif">
+</a>
 
 
 *  ### Skills

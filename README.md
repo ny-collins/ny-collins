@@ -1,3 +1,7 @@
+<div align="left">
+	<img src="https://github.com/K1rsN7/TechHaven/blob/master/img/logo.webp">
+	<br><br>
+
 Hi   ![](https://user-images.githubusercontent.com/18350557/176309783-0785949b-9127-417c-8b55-ab5a4333674e.gif) My name is Collins Mwangi
 ======================================================================================================================================
 Computer Programming Student
@@ -22,10 +26,10 @@ src="https://img.shields.io/github/followers/ny-collins?logo=github&style=for-th
 </a>
 
 
+
 *  ### Skills
 
-
-      <p align="left">
+    <p align="left">
       <a href="https://www.adobe.com/uk/products/photoshop.html" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/photoshop-colored.svg" width="36" height="36" alt="Photoshop" /></a>
       </p>
 
@@ -38,9 +42,9 @@ src="https://img.shields.io/github/followers/ny-collins?logo=github&style=for-th
 
 *  ### Badges
 
-    <b>My GitHub Stats</b>
-    
-    <a href="http://www.github.com/ny-collins"><img src="https://github-readme-stats.vercel.app/api?username=ny-collins&show_icons=true&hide=&count_private=true&title_color=0891b2&text_color=ffffff&icon_color=0891b2&bg_color=14532d&hide_border=true&show_icons=true" alt="ny-collins's GitHub stats" /></a>
+   <b>My GitHub Stats</b>
+
+   <a href="http://www.github.com/ny-collins"><img src="https://github-readme-stats.vercel.app/api?username=ny-collins&show_icons=true&hide=&count_private=true&title_color=0891b2&text_color=ffffff&icon_color=0891b2&bg_color=14532d&hide_border=true&show_icons=true" alt="ny-collins's GitHub stats" /></a>
 
       ![](https://nirzak-streak-stats.vercel.app/?user=ny-collins&theme=dark&hide_border=false)<br/>
 

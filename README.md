@@ -24,7 +24,7 @@ I'm a Computer Programming student, planning on studying Java, JavaScript, SQL, 
 src="https://img.shields.io/github/followers/ny-collins?logo=github&style=for-the-badge&color=0891b2&labelColor=14532d" /></a>
 <a target="_blank" align="centre">
 <img align="right" top="500" height="300" width="400" alt="GIF" src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExaDZxZGt6bnZuOGxmcjd3YmlqOG42ZjRoNWw3c2Q3MWxnYnJqaXY4cSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/qgQUggAC3Pfv687qPC/giphy.gif">
-</a>
+</a><br>
 
 
 

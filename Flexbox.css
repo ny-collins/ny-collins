@@ -1,0 +1,23 @@
+.container1 {
+	background-color: black;
+	width: 500px;
+	height: 500px;
+	display: flex;
+	justify-content: center;
+}
+
+.child1 {
+	background-color: red;
+	width: 50%;
+	height: 50%;
+	diplay: flex;
+	z-index: 1;
+}
+
+.child2 {
+	background-color: green;
+	width: 25%;
+	height: 25%;
+	display: flex;
+	z-index: 4;
+}

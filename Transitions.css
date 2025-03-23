@@ -1,0 +1,16 @@
+div {
+	width: 150px;
+	height: 150px;
+	background-color: aqua;
+	border: 2px solid black;
+	transition-duration: 2s;
+	transition-timing-function: ease-in;
+}
+
+div:hover {
+	background-color: red;
+}
+
+div:active {
+	background-color: pink
+}

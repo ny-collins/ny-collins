@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+    <body style="color: maroon; font-family: Verdana;>
+        <form action=" https://jsonplaceholder.typicode.com/todos" method="POST" id="practiceForm">
+          <label for="firstName" id="firstNameLabel"> First Name : </label>
+          <input type="text" id="firstName" name="Name" Placeholder="Enter your First Name" required maxlength="12" minlength="2"><br><br>
+
+          <label for="lastName" id="lastNameLabel"> Last Name : </label>
+          <input type="text" id="lastName" name="Name" Placeholder="Enter your Last Name" required maxlength="12" minlength="2"><br><br>
+
+          <label for="email" id="emailLabel"> Email address : </label>
+          <input type="email" id="email" name="Email Address" Placeholder="Enter your email address" required ><br><br>
+          
+          <label for="age" id="ageLabel"> Age : </label>
+          <input type="number" id="age" name="Age" min="0"><br><br>
+
+          <label for="gender" id="genderLabel"> Gender: </label>
+          <label for="male" id="maleLabel"> Male </label>
+          <input type="radio" id="male" name="gender">
+          <label for="female" id="femaleLabel"> Female </label>
+          <input type="radio" id="female" name="gender"><br><br>
+
+          <style>
+            .range-container {
+            margin: 20px;
+            }
+            #valueLabel {
+            font-size: 20px;
+            font-weight: bold;
+            display: block;
+            margin-top: 10px;
+            }
+			
+			body {
+				align-text: center;
+			}
+          </style>
+
+
+          <div class="range-container">
+            <label for="satisfaction" id="satisfactionLabel">Select a value of of which you are satisfied with the product:</label><br><br>
+            <input type="range" id="satisfaction" min="0" max="100" value="50" step="1">
+            <span id="valueLabel">50</span> <!-- The label will display the value -->
+          </div>
+
+          <script>
+            // Get the range input and the label element
+            const satisfaction = document.getElementById('satisfaction');
+            const valueLabel = document.getElementById('valueLabel');
+
+            // Update the label when the range value changes
+            satisfaction.addEventListener('input', function() {
+            valueLabel.textContent = satisfaction.value;
+            });
+          </script><br><br>
+
+          <input type="submit" id="submit" value="Submit Form" class="button">
+		  <style>
+			.button {
+			background-color: teal;
+			padding: 10px 20px;          /* Adds padding inside the button */
+			font-size: 16px;             /* Sets the font size */
+			border: 2px solid #007BFF;  /* Adds a border around the button */
+			background-color: #007BFF;  /* Sets the background color */
+			color: white;                /* Sets the text color */
+			border-radius: 12px;         /* This makes the edges rounded */
+			cursor: pointer;            /* Changes the cursor to a pointer on hover */
+			transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+			}
+			.button:hover {
+			background-color: #0056b3;   /* Changes the background color on hover */
+			}
+		  </style>
+        </form>
+    </body>
+</html>	

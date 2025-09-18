@@ -41,8 +41,6 @@ src="https://img.shields.io/github/followers/ny-collins?logo=github&style=for-th
 
    <b>My GitHub Stats</b>
 
-   <a href="http://www.github.com/ny-collins"><img src="https://github-readme-stats.vercel.app/api?username=ny-collins&show_icons=true&hide=&count_private=true&title_color=0891b2&text_color=ffffff&icon_color=0891b2&bg_color=14532d&hide_border=true&show_icons=true" alt="ny-collins's GitHub stats" /></a>
-
       ![](https://nirzak-streak-stats.vercel.app/?user=ny-collins&theme=dark&hide_border=false)<br/>
 
     <a href="https://github.com/ny-collins">
@@ -67,3 +65,7 @@ src="https://img.shields.io/github/followers/ny-collins?logo=github&style=for-th
    
  
    <p>Credit: <a href="https://github.com/ny-collins">  Collins Mwangi </a></p>
+
+   <!--
+	<a href="http://www.github.com/ny-collins"><img src="https://github-readme-stats.vercel.app/api?username=ny-collins&show_icons=true&hide=&count_private=true&title_color=0891b2&text_color=ffffff&icon_color=0891b2&bg_color=14532d&hide_border=true&show_icons=true" alt="ny-collins's GitHub stats" /></a>
+

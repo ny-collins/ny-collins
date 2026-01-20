@@ -41,8 +41,6 @@
       <img src="https://github-readme-stats.vercel.app/api?username=ny-collins&show_icons=true&theme=tokyonight&hide_border=true&count_private=true&layout=compact" alt="Collins Mwangi's GitHub Stats" />
       <br>
       <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=ny-collins&layout=compact&theme=tokyonight&hide_border=true" alt="Top Languages" />
-      <br>
-      <img src="https://nirzak-streak-stats.vercel.app/?user=ny-collins&theme=tokyonight&hide_border=true" alt="GitHub Streak" />
     </td>
   </tr>
 </table>

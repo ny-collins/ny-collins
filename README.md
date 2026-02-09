@@ -83,8 +83,7 @@ My learning and development are currently centered around these key areas:
 ### 📈 GitHub Activity & Stats
 <p align="center">
   <img src="https://github-readme-activity-graph.vercel.app/graph?username=ny-collins&bg_color=1a1b27&color=79d3c3&line=c792ea&point=ffc777&area=true&hide_border=true" alt="GitHub Activity Graph" />
-  <br><br>
-  <img src="https://github-profile-trophy.vercel.app/?username=ny-collins&theme=tokyonight&no-frame=true&no-bg=true&margin-w=4" alt="GitHub Trophies" />
+  <br>
 </p>
 
 ---

@@ -1,0 +1,130 @@
+---
+// src/pages/index.astro
+import TerminalLayout from '../layouts/TerminalLayout.astro';
+---
+
+<TerminalLayout title="Overview">
+  
+  <section class="mb-20 pt-10">
+    <div class="inline-block px-3 py-1 mb-6 text-xs font-mono text-emerald-400 bg-emerald-950/30 border border-emerald-900 rounded-full">
+      Available for collaboration
+    </div>
+    
+    <h1 class="text-5xl md:text-7xl font-bold text-white mb-6 tracking-tight">
+      Full-Stack Engineering.<br>
+      <span class="text-zinc-500">System-Level Depth.</span>
+    </h1>
+    
+    <p class="text-xl text-zinc-400 max-w-2xl leading-relaxed">
+      I build high-performance web applications while studying the underlying architecture. 
+      Bridging the gap between <strong class="text-white">modern UI/UX</strong> and <strong class="text-white">low-level systems</strong>.
+    </p>
+
+    <div class="mt-10 flex flex-wrap gap-4 font-mono text-sm">
+      <div class="px-4 py-2 bg-zinc-900 border border-zinc-800 rounded flex items-center gap-2 text-zinc-300">
+        <div class="w-2 h-2 bg-blue-500 rounded-full"></div>
+        React & Hono
+      </div>
+      <div class="px-4 py-2 bg-zinc-900 border border-zinc-800 rounded flex items-center gap-2 text-zinc-300">
+        <div class="w-2 h-2 bg-yellow-500 rounded-full"></div>
+        Linux & C
+      </div>
+      <div class="px-4 py-2 bg-zinc-900 border border-zinc-800 rounded flex items-center gap-2 text-zinc-300">
+        <div class="w-2 h-2 bg-orange-500 rounded-full"></div>
+        Cloudflare Edge
+      </div>
+    </div>
+  </section>
+
+  <section class="mb-20">
+    <div class="flex items-center justify-between mb-8">
+      <h2 class="text-2xl font-bold text-white">Selected Work</h2>
+      <a href="https://github.com/ny-collins" target="_blank" class="text-sm font-mono text-zinc-500 hover:text-white transition-colors">view_all_on_github -></a>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      
+      <a href="https://techbros.pages.dev" target="_blank" class="group relative bg-zinc-900/40 border border-zinc-800 hover:border-zinc-600 rounded-xl p-6 transition-all hover:bg-zinc-900/60">
+        <div class="mb-4 flex justify-between items-start">
+          <div class="p-2 bg-blue-500/10 rounded-lg text-blue-400">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
+          </div>
+          <span class="font-mono text-[10px] text-zinc-500 group-hover:text-zinc-300 transition-colors">PWA_ARCH</span>
+        </div>
+        <h3 class="text-xl font-bold text-white mb-2 group-hover:text-blue-400 transition-colors">TechBros Library</h3>
+        <p class="text-zinc-400 text-sm mb-4 leading-relaxed">
+          An offline-first educational platform designed for low-connectivity environments. Uses advanced caching strategies.
+        </p>
+        <div class="flex gap-2 font-mono text-[10px] text-zinc-500">
+          <span class="px-2 py-1 bg-zinc-800 rounded">JavaScript</span>
+          <span class="px-2 py-1 bg-zinc-800 rounded">ServiceWorkers</span>
+        </div>
+      </a>
+
+      <a href="https://speed-test-ahc.pages.dev" target="_blank" class="group relative bg-zinc-900/40 border border-zinc-800 hover:border-zinc-600 rounded-xl p-6 transition-all hover:bg-zinc-900/60">
+        <div class="mb-4 flex justify-between items-start">
+          <div class="p-2 bg-emerald-500/10 rounded-lg text-emerald-400">
+             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+          </div>
+          <span class="font-mono text-[10px] text-zinc-500 group-hover:text-zinc-300 transition-colors">NET_OPS</span>
+        </div>
+        <h3 class="text-xl font-bold text-white mb-2 group-hover:text-emerald-400 transition-colors">SpeedCheck</h3>
+        <p class="text-zinc-400 text-sm mb-4 leading-relaxed">
+          Lightweight network diagnostic tool. Measures latency and bandwidth with minimal overhead.
+        </p>
+        <div class="flex gap-2 font-mono text-[10px] text-zinc-500">
+          <span class="px-2 py-1 bg-zinc-800 rounded">Network API</span>
+          <span class="px-2 py-1 bg-zinc-800 rounded">Edge</span>
+        </div>
+      </a>
+
+       <a href="https://curiosity-pwa.web.app" target="_blank" class="group relative bg-zinc-900/40 border border-zinc-800 hover:border-zinc-600 rounded-xl p-6 transition-all hover:bg-zinc-900/60">
+        <div class="mb-4 flex justify-between items-start">
+          <div class="p-2 bg-orange-500/10 rounded-lg text-orange-400">
+             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.384-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path></svg>
+          </div>
+          <span class="font-mono text-[10px] text-zinc-500 group-hover:text-zinc-300 transition-colors">DISCOVERY</span>
+        </div>
+        <h3 class="text-xl font-bold text-white mb-2 group-hover:text-orange-400 transition-colors">Curiosity</h3>
+        <p class="text-zinc-400 text-sm mb-4 leading-relaxed">
+          Content discovery engine built on Firebase.
+        </p>
+        <div class="flex gap-2 font-mono text-[10px] text-zinc-500">
+          <span class="px-2 py-1 bg-zinc-800 rounded">Firebase</span>
+          <span class="px-2 py-1 bg-zinc-800 rounded">NoSQL</span>
+        </div>
+      </a>
+      
+      <a href="https://kjv-bible-7mw.pages.dev" target="_blank" class="group relative bg-zinc-900/40 border border-zinc-800 hover:border-zinc-600 rounded-xl p-6 transition-all hover:bg-zinc-900/60">
+        <div class="mb-4 flex justify-between items-start">
+          <div class="p-2 bg-purple-500/10 rounded-lg text-purple-400">
+             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
+          </div>
+          <span class="font-mono text-[10px] text-zinc-500 group-hover:text-zinc-300 transition-colors">DATA</span>
+        </div>
+        <h3 class="text-xl font-bold text-white mb-2 group-hover:text-purple-400 transition-colors">KJV Reader</h3>
+        <p class="text-zinc-400 text-sm mb-4 leading-relaxed">
+          High-performance text retrieval engine.
+        </p>
+        <div class="flex gap-2 font-mono text-[10px] text-zinc-500">
+          <span class="px-2 py-1 bg-zinc-800 rounded">React</span>
+          <span class="px-2 py-1 bg-zinc-800 rounded">JSON</span>
+        </div>
+      </a>
+
+    </div>
+  </section>
+
+  <section class="max-w-2xl mx-auto text-center pt-10 border-t border-zinc-800">
+    <h2 class="text-2xl font-bold text-white mb-6">Let's build something scalable.</h2>
+    <div class="flex justify-center gap-6">
+      <a href="mailto:mwangicollins391@gmail.com" class="px-6 py-3 bg-white text-black font-bold rounded hover:bg-zinc-200 transition-colors">
+        Email Me
+      </a>
+      <a href="https://x.com/CollinsMwa206" class="px-6 py-3 border border-zinc-700 text-zinc-300 font-bold rounded hover:border-white hover:text-white transition-colors">
+        X (Twitter)
+      </a>
+    </div>
+  </section>
+
+</TerminalLayout>

@@ -1,0 +1,59 @@
+---
+// src/layouts/TerminalLayout.astro
+import '@fontsource/jetbrains-mono';
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en" class="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content="Collins Mwangi | Full-Stack & Systems Engineering" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title} | Collins Mwangi</title>
+  </head>
+  <body class="bg-zinc-950 text-zinc-300 font-sans antialiased selection:bg-emerald-900 selection:text-white">
+    
+    <header class="border-b border-zinc-800 bg-zinc-900/50 backdrop-blur-md sticky top-0 z-50">
+      <div class="max-w-5xl mx-auto px-4 h-10 flex justify-between items-center text-[10px] font-mono tracking-widest text-zinc-500">
+        <div class="flex items-center gap-4">
+          <span class="text-emerald-500 font-bold">● ONLINE</span>
+          <span class="hidden sm:inline">COLLINS_MWANGI::SYSTEM</span>
+        </div>
+        <div class="flex gap-4">
+          <span class="hover:text-emerald-400 transition-colors cursor-default">LOC: NAIROBI_KE</span>
+          <span class="hover:text-blue-400 transition-colors cursor-default">LATENCY: <span id="ping">--</span>ms</span>
+        </div>
+      </div>
+    </header>
+
+    <main class="min-h-screen max-w-5xl mx-auto px-4 py-12 md:py-20">
+      <slot />
+    </main>
+
+    <footer class="border-t border-zinc-800 mt-20 py-8 text-center text-xs text-zinc-600 font-mono">
+      <p>ENGINEERED ON CLOUDFLARE EDGE</p>
+      <p class="mt-2 opacity-50">© {new Date().getFullYear()} Collins Mwangi. MIT License.</p>
+    </footer>
+
+  </body>
+</html>
+
+<script>
+  // A real (simulated) latency check to show you care about networking
+  const start = performance.now();
+  window.onload = () => {
+    const end = performance.now();
+    const ping = Math.round(end - start);
+    const el = document.getElementById('ping');
+    if(el) el.innerText = ping.toString();
+  };
+</script>

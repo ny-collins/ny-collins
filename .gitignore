@@ -1,5 +1,6 @@
 portfolio/.astro/
-portfolio/.vscode
 portfolio/.wrangler/
 portfolio/dist/
 portfolio/node_modules/
+portfolio/test-results/
+portfolio/playwright-report/

@@ -18,7 +18,7 @@ const { title } = Astro.props;
   </head>
   <body class="bg-zinc-950 text-zinc-300 font-sans antialiased selection:bg-emerald-900 selection:text-white">
     <header class="border-b border-zinc-800 bg-zinc-900/50 backdrop-blur-md sticky top-0 z-50">
-      <div class="max-w-5xl mx-auto px-4 h-10 flex justify-between items-center text-[10px] font-mono tracking-widest text-zinc-500">
+      <div class="max-w-5xl mx-auto px-4 h-10 flex justify-between items-center text-[10px] font-mono tracking-widest text-zinc-400">
         <div class="flex items-center gap-4">
           <span class="text-emerald-500 font-bold">● ONLINE</span>
           <span class="hidden sm:inline">COLLINS_MWANGI::SYSTEM</span>
@@ -34,9 +34,9 @@ const { title } = Astro.props;
       <slot />
     </main>
 
-    <footer class="border-t border-zinc-800 mt-20 py-8 text-center text-xs text-zinc-600 font-mono">
+    <footer class="border-t border-zinc-800 mt-20 py-8 text-center text-xs text-zinc-400 font-mono">
       <p>ENGINEERED ON CLOUDFLARE EDGE</p>
-      <p class="mt-2 opacity-50">© {new Date().getFullYear()} Collins Mwangi. MIT License.</p>
+      <p class="mt-2 text-zinc-400">© {new Date().getFullYear()} Collins Mwangi. MIT License.</p>
     </footer>
 
   </body>

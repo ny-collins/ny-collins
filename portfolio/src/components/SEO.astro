@@ -15,6 +15,34 @@ const {
 const siteBase = "https://collinsmwangi.me";
 const siteURL = new URL(Astro.url.pathname, siteBase).toString();
 const socialImageURL = new URL(image, siteBase).toString();
+
+// Structured data for SEO
+const structuredData = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Collins Mwangi",
+  "jobTitle": "Full-Stack Engineer",
+  "url": siteBase,
+  "sameAs": [
+    "https://github.com/ny-collins",
+    "https://x.com/CollinsMwa206"
+  ],
+  "knowsAbout": [
+    "JavaScript",
+    "TypeScript",
+    "React",
+    "Node.js",
+    "Astro",
+    "Edge Computing",
+    "Full-Stack Development",
+    "Systems Programming"
+  ],
+  "alumniOf": {
+    "@type": "CollegeOrUniversity",
+    "name": "University of Nairobi"
+  },
+  "description": description
+};
 ---
 
 <meta charset="utf-8" />
@@ -41,3 +69,5 @@ const socialImageURL = new URL(image, siteBase).toString();
 <meta property="twitter:image" content={socialImageURL} />
 
 <link rel="sitemap" href="/sitemap-index.xml" />
+
+<script type="application/ld+json" set:html={JSON.stringify(structuredData)} />

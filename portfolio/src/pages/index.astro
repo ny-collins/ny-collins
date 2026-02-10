@@ -1,6 +1,8 @@
 ---
+// src/pages/index.astro
 import TerminalLayout from '../layouts/TerminalLayout.astro';
 import { projects } from '../data/projects';
+import { experiments } from '../data/experiments';
 ---
 
 <TerminalLayout title="Overview">
@@ -51,7 +53,6 @@ import { projects } from '../data/projects';
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-
       {projects.map(project => (
         <a
           href={project.url}
@@ -79,7 +80,40 @@ import { projects } from '../data/projects';
           </div>
         </a>
       ))}
+    </div>
+  </section>
 
+  <section class="mb-20">
+    <div class="flex items-center justify-between mb-8">
+      <h2 class="text-2xl font-bold text-white">Engineering Lab</h2>
+      <span class="text-sm font-mono text-zinc-400">/notebook</span>
+    </div>
+
+    <div class="grid gap-4">
+      {experiments.map(exp => (
+        <a
+          href={exp.url}
+          class="flex flex-col md:flex-row md:items-center justify-between p-6 bg-zinc-900/20 border border-zinc-800/50 hover:border-zinc-600 rounded-lg group transition-all hover:bg-zinc-900/40 focus:outline-none focus:ring-2 focus:ring-emerald-500"
+        >
+          <div class="flex-1">
+            <div class="flex items-center gap-3 mb-2">
+              <span class="font-mono text-xs text-emerald-500 bg-emerald-500/10 px-2 py-0.5 rounded">Active</span>
+              <h3 class="text-lg font-bold text-white group-hover:text-emerald-400 transition-colors">{exp.title}</h3>
+            </div>
+            <p class="text-sm text-zinc-400 font-mono">{exp.desc}</p>
+          </div>
+
+          <div class="mt-4 md:mt-0 flex items-center gap-4 text-xs font-mono text-zinc-400">
+            <div class="flex gap-2">
+              {exp.tags.map(tag => (
+                <span>#{tag}</span>
+              ))}
+            </div>
+            <span class="hidden md:inline text-zinc-700">|</span>
+            <span class="group-hover:translate-x-1 transition-transform text-white">EXECUTE -></span>
+          </div>
+        </a>
+      ))}
     </div>
   </section>
 

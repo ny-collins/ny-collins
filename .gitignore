@@ -1,5 +1,5 @@
 portfolio/.astro/
-portfolio/.vscode/
+portfolio/.vscode
 portfolio/.wrangler/
 portfolio/dist/
 portfolio/node_modules/

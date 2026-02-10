@@ -1,0 +1,44 @@
+---
+// src/pages/notebook/ieee-754.astro
+import TerminalLayout from '../../layouts/TerminalLayout.astro';
+import FloatVisualizer from '../../components/FloatVisualizer.svelte';
+---
+
+<TerminalLayout title="System Lab: IEEE 754">
+  <div class="max-w-3xl mx-auto">
+
+    <a href="/" class="inline-flex items-center text-xs font-mono text-zinc-400 hover:text-white mb-8 transition-colors">
+      <svg class="w-3 h-3 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+      cd ..
+    </a>
+
+    <header class="mb-12">
+      <h1 class="text-3xl font-bold text-white mb-4">Floating Point Internals</h1>
+      <p class="text-zinc-400 leading-relaxed">
+        An interactive visualization of how computers store decimal numbers using the
+        <strong class="text-white">IEEE 754 Single-Precision</strong> standard.
+        Toggle the bits to see how the sign, exponent, and mantissa affect the final value.
+      </p>
+    </header>
+
+    <div class="mb-12">
+      <FloatVisualizer client:load />
+    </div>
+
+    <section class="prose prose-invert prose-sm max-w-none">
+      <h3 class="text-white font-mono text-sm border-b border-zinc-800 pb-2 mb-4">UNDER THE HOOD</h3>
+      <div class="bg-zinc-900/50 p-6 rounded-lg border border-zinc-800 font-mono text-xs text-zinc-400 space-y-2">
+        <p>Memory Allocation: 32 bits (4 bytes)</p>
+        <p>Structure:</p>
+        <ul class="list-disc pl-4 space-y-1">
+          <li><span class="text-red-400">Bit 31:</span> Sign (0=Positive, 1=Negative)</li>
+          <li><span class="text-green-400">Bits 30-23:</span> Exponent (Bias 127)</li>
+          <li><span class="text-blue-400">Bits 22-0:</span> Mantissa (Fractional part)</li>
+        </ul>
+        <p class="pt-4 text-zinc-400">// Formula</p>
+        <p class="text-emerald-400">Value = (-1)ˢ × 1.m × 2⁽ᵉ⁻¹²⁷⁾</p>
+      </div>
+    </section>
+
+  </div>
+</TerminalLayout>

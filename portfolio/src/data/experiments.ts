@@ -1,4 +1,3 @@
-// src/data/experiments.ts
 export const experiments = [
     {
         title: "IEEE 754 Visualizer",

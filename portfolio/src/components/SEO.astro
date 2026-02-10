@@ -1,5 +1,4 @@
 ---
-// src/components/SEO.astro
 interface Props {
   title: string;
   description?: string;
@@ -16,7 +15,6 @@ const siteBase = "https://collinsmwangi.me";
 const siteURL = new URL(Astro.url.pathname, siteBase).toString();
 const socialImageURL = new URL(image, siteBase).toString();
 
-// Structured data for SEO
 const structuredData = {
   "@context": "https://schema.org",
   "@type": "Person",

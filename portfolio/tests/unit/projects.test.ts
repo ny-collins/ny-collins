@@ -17,22 +17,13 @@ describe('Portfolio Data Validation', () => {
 
   it('all projects should have required fields', () => {
     projects.forEach(project => {
-      // Check for title
       expect(project.title).toBeTruthy();
       expect(project.title.length).toBeGreaterThan(0);
-
-      // Check for description
       expect(project.desc).toBeTruthy();
       expect(project.desc.length).toBeGreaterThan(10);
-
-      // Check for stack
       expect(project.stack).toBeInstanceOf(Array);
       expect(project.stack.length).toBeGreaterThan(0);
-
-      // Check for tag
       expect(project.tag).toBeTruthy();
-
-      // Check for URL
       expect(project.url).toBeTruthy();
     });
   });

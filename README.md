@@ -1,6 +1,6 @@
 <div align="center">
   <h1>Collins Mwangi | <code>~/home/collins</code></h1>
-  
+
   <p>
     <strong>Full-Stack Engineer</strong> • <strong>Data Science Undergraduate</strong> • <strong>Systems Explorer</strong>
   </p>
@@ -88,3 +88,13 @@ Currently, I am actively shipping code in the **JavaScript/TypeScript ecosystem*
 ![Linux](https://img.shields.io/badge/Linux-Ubuntu-FCC624?style=flat-square&logo=linux&logoColor=black)
 
 ---
+## ⚖️ License & Attribution
+
+This project is open source and available under the [MIT License](LICENSE).
+
+**What does this mean?**
+- ✅ You are free to fork this repository and use the code/architecture for your own portfolio.
+- ✅ You can modify the visualizer components for your own experiments.
+- ❌ **Please do not** use my personal logo, bio, photos, or specific project descriptions without attribution.
+
+If you use this codebase, a link back to [collinsmwangi.me](https://collinsmwangi.me) would be appreciated!

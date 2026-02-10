@@ -6,14 +6,15 @@ interface Props {
   image?: string;
 }
 
-const { 
-  title, 
-  description = "Full-Stack Engineer & Systems Explorer. Building high-performance applications at the Edge.", 
-  image = "/og-default.png" 
+const {
+  title,
+  description = "Full-Stack Engineer & Systems Explorer. Building high-performance applications at the Edge.",
+  image = "/og-default.png"
 } = Astro.props;
 
-const siteURL = new URL(Astro.url.pathname, Astro.site);
-const socialImageURL = new URL(image, Astro.site);
+const siteBase = "https://collinsmwangi.me";
+const siteURL = new URL(Astro.url.pathname, siteBase).toString();
+const socialImageURL = new URL(image, siteBase).toString();
 ---
 
 <meta charset="utf-8" />

@@ -14,13 +14,7 @@ const { title } = Astro.props;
 <!doctype html>
 <html lang="en" class="dark">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="description" content="Collins Mwangi | Full-Stack & Systems Engineering" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="generator" content={Astro.generator} />
     <SEO title={title} />
-    <title>{title} | Collins Mwangi</title>
   </head>
   <body class="bg-zinc-950 text-zinc-300 font-sans antialiased selection:bg-emerald-900 selection:text-white">
 
@@ -50,7 +44,6 @@ const { title } = Astro.props;
 </html>
 
 <script>
-  // A real (simulated) latency check to show you care about networking
   const start = performance.now();
   window.onload = () => {
     const end = performance.now();

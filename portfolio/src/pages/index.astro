@@ -9,7 +9,10 @@ const projects = [
     tag: "PWA_ARCH",
     desc: "Offline-first educational platform designed for low-connectivity environments.",
     stack: ["JavaScript", "ServiceWorkers"],
-    color: "blue",
+    // Explicit classes:
+    iconBg: "bg-blue-500/10",
+    iconColor: "text-blue-400",
+    hoverColor: "group-hover:text-blue-400",
     iconPath: "M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"
   },
   {
@@ -18,7 +21,9 @@ const projects = [
     tag: "NET_OPS",
     desc: "Lightweight network diagnostic tool. Measures latency and bandwidth with minimal overhead.",
     stack: ["Network API", "Edge"],
-    color: "emerald",
+    iconBg: "bg-emerald-500/10",
+    iconColor: "text-emerald-400",
+    hoverColor: "group-hover:text-emerald-400",
     iconPath: "M13 10V3L4 14h7v7l9-11h-7z"
   },
   {
@@ -27,7 +32,9 @@ const projects = [
     tag: "DISCOVERY",
     desc: "Content discovery engine built on Firebase.",
     stack: ["Firebase", "NoSQL"],
-    color: "orange",
+    iconBg: "bg-orange-500/10",
+    iconColor: "text-orange-400",
+    hoverColor: "group-hover:text-orange-400",
     iconPath: "M19.428 15.428a2 2 0 00-1.022-.547l-2.384-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"
   },
   {
@@ -36,7 +43,9 @@ const projects = [
     tag: "DATA",
     desc: "High-performance biblical text retrieval engine.",
     stack: ["React", "JSON"],
-    color: "purple",
+    iconBg: "bg-purple-500/10",
+    iconColor: "text-purple-400",
+    hoverColor: "group-hover:text-purple-400",
     iconPath: "M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"
   }
 ];
@@ -100,14 +109,14 @@ const projects = [
           class="group relative bg-zinc-900/40 border border-zinc-800 hover:border-zinc-600 rounded-xl p-6 transition-all hover:bg-zinc-900/60 focus:outline-none focus:ring-2 focus:ring-emerald-500"
         >
           <div class="mb-4 flex justify-between items-start">
-            <div class={`p-2 bg-${project.color}-500/10 rounded-lg text-${project.color}-400`}>
+            <div class={`p-2 rounded-lg ${project.iconBg} ${project.iconColor}`}>
               <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d={project.iconPath}></path>
               </svg>
             </div>
             <span class="font-mono text-[10px] text-zinc-500 group-hover:text-zinc-300 transition-colors">{project.tag}</span>
           </div>
-          <h3 class={`text-xl font-bold text-white mb-2 group-hover:text-${project.color}-400 transition-colors`}>{project.title}</h3>
+          <h3 class={`text-xl font-bold text-white mb-2 transition-colors ${project.hoverColor}`}>{project.title}</h3>
           <p class="text-zinc-400 text-sm mb-4 leading-relaxed">
             {project.desc}
           </p>

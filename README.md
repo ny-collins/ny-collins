@@ -56,7 +56,7 @@ Currently, I am actively shipping code in the **JavaScript/TypeScript ecosystem*
 | **TechBros Library** | *PWA, JS* | An offline-first Progressive Web App designed for educational resource sharing. Focuses on accessibility and caching strategies. | [Live](https://techbros.pages.dev) • [Code](https://github.com/ny-collins/techbros) |
 | **SpeedCheck** | *JS, Network* | A lightweight network diagnostic tool to measure latency and bandwidth. Optimized for low-overhead performance testing. | [Live](https://speed-test-ahc.pages.dev) • [Code](https://github.com/ny-collins/internet_speed_test) |
 | **Curiosity** | *PWA, Firebase* | A content discovery platform built as a PWA, leveraging service workers for seamless mobile experiences. | [Live](https://curiosity-pwa.web.app) • [Code](https://github.com/ny-collins/curiosity-pwa) |
-| **Cowee KJV Bible** | *Svelte, JSON* | A fast, searchable digital scripture reader with PWA and offline support. Optimized for quick text retrieval and rendering. | [Live](https://coweekjv.pages.dev) • [Code](https://github.com/coweekjv) |
+| **Cowee KJV Bible** | *Svelte, JSON* | A fast, searchable digital scripture reader with PWA and offline support. Optimized for quick text retrieval and rendering. | [Live](https://coweekjv.pages.dev) • [Code](https://github.com/ny-collins/coweekjv) |
 
 ---
 

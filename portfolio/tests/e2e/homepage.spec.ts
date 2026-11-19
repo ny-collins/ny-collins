@@ -4,8 +4,8 @@ import AxeBuilder from '@axe-core/playwright';
 test.describe('Portfolio Homepage', () => {
   test('page loads and displays main content', async ({ page }) => {
     await page.goto('/');
-    await expect(page.locator('h1')).toContainText('Full-Stack Engineering');
-    await expect(page.locator('h2:has-text("Selected Work")')).toBeVisible();
+    await expect(page.locator('h1')).toContainText('Learning how things work');
+    await expect(page.locator('h2:has-text("Projects")')).toBeVisible();
     const projectCards = page.locator('a[aria-label*="project"]');
     await expect(projectCards).toHaveCount(4);
   });

@@ -7,11 +7,11 @@ interface Props {
 
 const {
   title,
-  description = "Full-Stack Engineer & Systems Explorer. Building high-performance applications at the Edge.",
+  description = "Data Science student at the University of Nairobi, learning how computers, networks and mathematics work from the fundamentals up.",
   image = "/og-default.png"
 } = Astro.props;
 
-const siteBase = "https://collinsmwangi.me";
+const siteBase = (Astro.site ?? new URL("https://collinsmwangi.me")).origin;
 const siteURL = new URL(Astro.url.pathname, siteBase).toString();
 const socialImageURL = new URL(image, siteBase).toString();
 
@@ -19,23 +19,19 @@ const structuredData = {
   "@context": "https://schema.org",
   "@type": "Person",
   "name": "Collins Mwangi",
-  "jobTitle": "Full-Stack Engineer",
   "url": siteBase,
   "sameAs": [
     "https://github.com/ny-collins",
     "https://x.com/CollinsMwa206"
   ],
   "knowsAbout": [
-    "JavaScript",
-    "TypeScript",
-    "React",
-    "Node.js",
-    "Astro",
-    "Edge Computing",
-    "Full-Stack Development",
-    "Systems Programming"
+    "Data science",
+    "Mathematics",
+    "Computer networking",
+    "Linux",
+    "Web development"
   ],
-  "alumniOf": {
+  "affiliation": {
     "@type": "CollegeOrUniversity",
     "name": "University of Nairobi"
   },
@@ -60,11 +56,11 @@ const structuredData = {
 <meta property="og:description" content={description} />
 <meta property="og:image" content={socialImageURL} />
 
-<meta property="twitter:card" content="summary_large_image" />
-<meta property="twitter:url" content={siteURL} />
-<meta property="twitter:title" content={title} />
-<meta property="twitter:description" content={description} />
-<meta property="twitter:image" content={socialImageURL} />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:url" content={siteURL} />
+<meta name="twitter:title" content={title} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={socialImageURL} />
 
 <link rel="sitemap" href="/sitemap-index.xml" />
 

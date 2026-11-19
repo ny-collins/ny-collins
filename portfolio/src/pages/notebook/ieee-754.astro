@@ -1,6 +1,14 @@
 ---
 import TerminalLayout from '../../layouts/TerminalLayout.astro';
 import FloatVisualizer from '../../components/FloatVisualizer.svelte';
+
+const cases = [
+  { e: '0', f: '0', kind: 'Zero', value: '(−1)ˢ × 0' },
+  { e: '0', f: '≠ 0', kind: 'Subnormal', value: '(−1)ˢ × 0.f × 2⁻¹²⁶' },
+  { e: '1 – 254', f: 'any', kind: 'Normal', value: '(−1)ˢ × 1.f × 2⁽ᵉ⁻¹²⁷⁾' },
+  { e: '255', f: '0', kind: 'Infinity', value: '(−1)ˢ × ∞' },
+  { e: '255', f: '≠ 0', kind: 'NaN', value: 'not a number' },
+];
 ---
 
 <TerminalLayout title="System Lab: IEEE 754">
@@ -14,9 +22,10 @@ import FloatVisualizer from '../../components/FloatVisualizer.svelte';
     <header class="mb-12">
       <h1 class="text-3xl font-bold text-white mb-4">Floating Point Internals</h1>
       <p class="text-zinc-400 leading-relaxed">
-        An interactive visualization of how computers store decimal numbers using the
-        <strong class="text-white">IEEE 754 Single-Precision</strong> standard.
-        Toggle the bits to see how the sign, exponent, and mantissa affect the final value.
+        How a computer stores a real number in 32 bits, using the
+        <strong class="text-white">IEEE 754 binary32</strong> (single-precision) format.
+        Toggle bits, or type a value, and watch the sign, exponent and fraction fields change.
+        Try <code class="font-mono text-emerald-400">0.1</code>: the number stored is not exactly one tenth.
       </p>
     </header>
 
@@ -24,18 +33,60 @@ import FloatVisualizer from '../../components/FloatVisualizer.svelte';
       <FloatVisualizer client:load />
     </div>
 
-    <section class="prose prose-invert prose-sm max-w-none">
-      <h3 class="text-white font-mono text-sm border-b border-zinc-800 pb-2 mb-4">UNDER THE HOOD</h3>
+    <section class="space-y-6">
+      <h2 class="text-white font-mono text-sm border-b border-zinc-800 pb-2">UNDER THE HOOD</h2>
+
       <div class="bg-zinc-900/50 p-6 rounded-lg border border-zinc-800 font-mono text-xs text-zinc-400 space-y-2">
-        <p>Memory Allocation: 32 bits (4 bytes)</p>
-        <p>Structure:</p>
+        <p>Memory: 32 bits (4 bytes), laid out left to right:</p>
         <ul class="list-disc pl-4 space-y-1">
-          <li><span class="text-red-400">Bit 31:</span> Sign (0=Positive, 1=Negative)</li>
-          <li><span class="text-green-400">Bits 30-23:</span> Exponent (Bias 127)</li>
-          <li><span class="text-blue-400">Bits 22-0:</span> Mantissa (Fractional part)</li>
+          <li><span class="text-red-400">Bit 31:</span> sign (0 = positive, 1 = negative)</li>
+          <li><span class="text-green-400">Bits 30–23:</span> exponent field, 8 bits, stored with a bias of 127</li>
+          <li><span class="text-blue-400">Bits 22–0:</span> fraction field, 23 bits (the standard calls it the trailing significand field)</li>
         </ul>
-        <p class="pt-4 text-zinc-400">// Formula</p>
-        <p class="text-emerald-400">Value = (-1)ˢ × 1.m × 2⁽ᵉ⁻¹²⁷⁾</p>
+      </div>
+
+      <div class="overflow-x-auto">
+        <table class="w-full text-left font-mono text-xs border border-zinc-800">
+          <caption class="sr-only">How the exponent field and fraction field determine the meaning of a binary32 value</caption>
+          <thead class="bg-zinc-900 text-zinc-300">
+            <tr>
+              <th scope="col" class="p-3">Exponent field (e)</th>
+              <th scope="col" class="p-3">Fraction (f)</th>
+              <th scope="col" class="p-3">Kind</th>
+              <th scope="col" class="p-3">Value</th>
+            </tr>
+          </thead>
+          <tbody class="text-zinc-400">
+            {cases.map(row => (
+              <tr class="border-t border-zinc-800">
+                <td class="p-3">{row.e}</td>
+                <td class="p-3">{row.f}</td>
+                <td class="p-3">{row.kind}</td>
+                <td class="p-3 text-emerald-400">{row.value}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+
+      <div class="text-sm text-zinc-400 leading-relaxed space-y-4">
+        <p>
+          The formula <code class="font-mono text-emerald-400">(−1)ˢ × 1.f × 2⁽ᵉ⁻¹²⁷⁾</code> describes only the
+          <em>normal</em> numbers. The leading 1 is not stored; it is implied, which is how 23 stored bits give 24 bits
+          of precision. When the exponent field is 0, the implied bit becomes 0 and the exponent is fixed at −126, so the
+          numbers fade toward zero in even steps (gradual underflow) instead of jumping from the smallest normal number
+          straight to 0. When the exponent field is 255, the value is an infinity or a NaN.
+        </p>
+        <p>
+          Most decimal fractions, 0.1 among them, have no finite binary expansion, so the nearest representable value is
+          stored instead. For 0.1 that value is 0.100000001490116119384765625. The panel under the bit grid shows the
+          exact stored value so you can see the gap.
+        </p>
+        <p>
+          A note on words: this field is often called the <em>mantissa</em>, and an earlier version of this
+          page used that word. IEEE 754 uses <em>significand</em> for the whole 1.f quantity and <em>trailing significand field</em>
+          for the stored 23 bits, because "mantissa" also names the fractional part of a logarithm, which is a different thing.
+        </p>
       </div>
     </section>
 

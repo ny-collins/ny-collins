@@ -1,155 +1,165 @@
 <script lang="ts">
-  import { onMount } from 'svelte';
+  import { decode, floatToBits, formatValue, parseFloatInput, toggleBit } from '../lib/float32';
 
-  let floatValue = 3.14159;
-  let bitArray = new Array(32).fill(0);
-  
-  const buffer = new ArrayBuffer(4);
-  const floatView = new Float32Array(buffer);
-  const uintView = new Uint32Array(buffer);
+  const examples: Array<{ label: string; value: number; text: string }> = [
+    { label: '0.0', value: 0, text: '0' },
+    { label: '-0.0', value: -0, text: '-0' },
+    { label: '0.1', value: 0.1, text: '0.1' },
+    { label: '1.0', value: 1, text: '1' },
+    { label: '+∞', value: Infinity, text: 'Infinity' },
+    { label: '-∞', value: -Infinity, text: '-Infinity' },
+    { label: 'NaN', value: NaN, text: 'NaN' },
+  ];
 
-  function updateBitsFromFloat() {
-    floatView[0] = floatValue;
-    const bits = uintView[0];
-    for (let i = 0; i < 32; i++) {
-      bitArray[31 - i] = (bits >> i) & 1;
+  // The 32 bits are the only source of truth. Everything shown is derived from them,
+  // so the grid, the readouts and the hex can never disagree.
+  let bits = $state(floatToBits(0.1));
+  let text = $state('0.1'); // what is currently in the value box
+  let parseError = $state<string | null>(null);
+
+  const info = $derived(decode(bits));
+  const bitArray = $derived(Array.from({ length: 32 }, (_, i) => (bits >>> (31 - i)) & 1));
+
+  const special = $derived.by(() => {
+    switch (info.kind) {
+      case 'nan':
+        return `NaN (Not a Number, ${info.nanKind})`;
+      case 'infinity':
+        return info.sign === 0 ? '+Infinity' : '-Infinity';
+      case 'zero':
+        return info.sign === 1 ? '-0 (Negative Zero)' : null;
+      case 'subnormal':
+        return 'Subnormal number (no implicit leading 1)';
+      default:
+        return null;
+    }
+  });
+
+  const exponentText = $derived.by(() => {
+    const e = info.exponentField;
+    switch (info.kind) {
+      case 'normal':
+        return `${e} → 2^(${e} − 127) = 2^${e - 127}`;
+      case 'zero':
+        return '0 (zero)';
+      case 'subnormal':
+        return '0 (subnormal: fixed at 2^-126)';
+      case 'infinity':
+        return '255 (infinity)';
+      default:
+        return '255 (NaN)';
+    }
+  });
+
+  const significandText = $derived(
+    info.significandExact === null
+      ? 'not used'
+      : (info.kind === 'normal' ? '1.' : '0.') +
+          `f where f = ${info.fractionField} / 2^23 → ${info.significandExact}`
+  );
+
+  function setNumber(value: number, shown: string) {
+    bits = floatToBits(value);
+    text = shown;
+    parseError = null;
+  }
+
+  function onInput(next: string) {
+    text = next;
+    const result = parseFloatInput(next);
+    if (result.ok) {
+      bits = floatToBits(result.value);
+      parseError = null;
+    } else {
+      parseError = result.reason;
     }
   }
 
-  function updateFloatFromBits() {
-    let bits = 0;
-    for (let i = 0; i < 32; i++) {
-      if (bitArray[31 - i]) {
-        bits |= (1 << i);
-      }
-    }
-    uintView[0] = bits;
-    floatValue = floatView[0];
+  function flip(index: number) {
+    bits = toggleBit(bits, index);
+    text = formatValue(decode(bits).value);
+    parseError = null;
   }
 
-  function toggleBit(index: number) {
-    bitArray[index] = bitArray[index] === 1 ? 0 : 1;
-    updateFloatFromBits();
+  function fieldOf(index: number): 'sign' | 'exponent' | 'fraction' {
+    return index === 0 ? 'sign' : index < 9 ? 'exponent' : 'fraction';
   }
 
-  function getSpecialValue(): string | null {
-    if (Number.isNaN(floatValue)) return 'NaN (Not a Number)';
-    if (floatValue === Infinity) return '+Infinity';
-    if (floatValue === -Infinity) return '-Infinity';
-    if (Object.is(floatValue, -0)) return '-0 (Negative Zero)';
-    const exponent = parseInt(bitArray.slice(1, 9).join(''), 2);
-    if (exponent === 0 && bitArray.slice(9).some(b => b === 1)) {
-      return 'Denormalized Number';
-    }
-    return null;
-  }
-
-  function loadExample(value: number) {
-    floatValue = value;
-    updateBitsFromFloat();
-  }
-
-  function getBitLabel(index: number): string {
+  function bitLabel(index: number): string {
     const pos = 31 - index;
     const state = bitArray[index] === 1 ? 'set' : 'clear';
-    if (index === 0) return `Sign bit (bit ${pos}): ${state}. Click to toggle`;
-    if (index < 9) return `Exponent bit ${pos}: ${state}. Click to toggle`;
-    return `Mantissa bit ${pos}: ${state}. Click to toggle`;
+    const name = { sign: 'Sign bit', exponent: 'Exponent bit', fraction: 'Fraction bit' }[fieldOf(index)];
+    return `${name} (bit ${pos}): ${state}. Click to toggle`;
   }
 
-  onMount(() => {
-    updateBitsFromFloat();
-  });
+  const cellClass = {
+    sign: 'bg-red-500/10 text-red-400 hover:bg-red-500/20 focus-visible:ring-red-500',
+    exponent: 'bg-green-500/10 text-green-400 hover:bg-green-500/20 focus-visible:ring-green-500',
+    fraction: 'bg-blue-500/10 text-blue-400 hover:bg-blue-500/20 focus-visible:ring-blue-500',
+  } as const;
 </script>
 
-<div class="p-6 bg-zinc-900 border border-zinc-800 rounded-xl max-w-3xl mx-auto shadow-2xl">
-  <div class="flex flex-col md:flex-row justify-between items-center mb-6 gap-4">
+<div class="p-4 sm:p-6 bg-zinc-900 border border-zinc-800 rounded-xl max-w-3xl mx-auto shadow-2xl">
+  <div class="flex flex-col md:flex-row justify-between md:items-center mb-6 gap-4">
     <div>
       <h2 class="text-xl font-bold text-white mb-1">IEEE 754 Visualizer</h2>
       <p class="text-xs text-zinc-400 font-mono">32-BIT SINGLE PRECISION FLOAT</p>
     </div>
-    
+
     <div class="flex items-center gap-4 bg-black/30 p-2 rounded-lg border border-zinc-800">
       <label for="float-input" class="text-zinc-400 text-sm font-mono">VALUE:</label>
-      <input 
+      <input
         id="float-input"
-        type="number" 
-        step="any" 
-        bind:value={floatValue} 
-        on:input={updateBitsFromFloat}
-        aria-label="Floating point value"
-        class="bg-transparent text-emerald-400 font-mono text-xl font-bold focus:outline-none focus:ring-2 focus:ring-emerald-500 rounded px-1 w-40 text-right"
+        type="text"
+        inputmode="decimal"
+        autocomplete="off"
+        spellcheck="false"
+        value={text}
+        oninput={(e) => onInput(e.currentTarget.value)}
+        aria-describedby={parseError ? 'float-error' : undefined}
+        class="bg-transparent text-emerald-400 font-mono text-xl font-bold focus:outline-none focus:ring-2 focus:ring-emerald-500 rounded px-1 w-full md:w-48 text-right"
       />
     </div>
   </div>
 
-  {#if getSpecialValue()}
+  {#if parseError}
+    <p id="float-error" role="alert" class="mb-4 text-xs font-mono text-red-400">{parseError}</p>
+  {/if}
+
+  {#if special}
     <div class="mb-4 p-3 bg-amber-500/10 border border-amber-500/30 rounded-lg">
       <p class="text-xs font-mono text-amber-400">
-        <span class="font-bold">SPECIAL VALUE:</span> {getSpecialValue()}
+        <span class="font-bold">SPECIAL VALUE:</span> {special}
       </p>
     </div>
   {/if}
 
   <div class="mb-6 flex flex-wrap gap-2">
-    <button
-      on:click={() => loadExample(0)}
-      class="px-3 py-1 text-xs font-mono bg-zinc-800 hover:bg-zinc-700 text-zinc-300 rounded transition-colors"
-    >
-      0.0
-    </button>
-    <button
-      on:click={() => loadExample(-0)}
-      class="px-3 py-1 text-xs font-mono bg-zinc-800 hover:bg-zinc-700 text-zinc-300 rounded transition-colors"
-    >
-      -0.0
-    </button>
-    <button
-      on:click={() => loadExample(1)}
-      class="px-3 py-1 text-xs font-mono bg-zinc-800 hover:bg-zinc-700 text-zinc-300 rounded transition-colors"
-    >
-      1.0
-    </button>
-    <button
-      on:click={() => loadExample(Infinity)}
-      class="px-3 py-1 text-xs font-mono bg-zinc-800 hover:bg-zinc-700 text-zinc-300 rounded transition-colors"
-    >
-      +∞
-    </button>
-    <button
-      on:click={() => loadExample(-Infinity)}
-      class="px-3 py-1 text-xs font-mono bg-zinc-800 hover:bg-zinc-700 text-zinc-300 rounded transition-colors"
-    >
-      -∞
-    </button>
-    <button
-      on:click={() => loadExample(NaN)}
-      class="px-3 py-1 text-xs font-mono bg-zinc-800 hover:bg-zinc-700 text-zinc-300 rounded transition-colors"
-    >
-      NaN
-    </button>
+    {#each examples as ex}
+      <button
+        type="button"
+        onclick={() => setNumber(ex.value, ex.text)}
+        class="px-3 py-2 text-xs font-mono bg-zinc-800 hover:bg-zinc-700 text-zinc-300 rounded transition-colors"
+      >
+        {ex.label}
+      </button>
+    {/each}
   </div>
 
-  <div class="mb-2" role="group" aria-label="IEEE 754 bit representation with 32 bits: 1 sign bit, 8 exponent bits, 23 mantissa bits">
-    <div class="flex text-[10px] font-mono text-zinc-500 mb-2 px-1">
-      <div class="w-[3.125%] text-center text-red-400" aria-label="Sign bit section">S</div>
-      <div class="w-[25%] text-center text-green-400" aria-label="Exponent bits section">EXPONENT (8)</div>
-      <div class="w-[71.875%] text-center text-blue-400" aria-label="Mantissa bits section">MANTISSA (23)</div>
-    </div>
+  <div class="mb-2" role="group" aria-label="IEEE 754 bit pattern: 1 sign bit, 8 exponent bits, 23 fraction bits">
+    <ul class="flex flex-wrap gap-x-4 gap-y-1 mb-2 text-[11px] font-mono">
+      <li class="text-red-400">■ sign · 1 bit</li>
+      <li class="text-green-400">■ exponent · 8 bits</li>
+      <li class="text-blue-400">■ fraction · 23 bits</li>
+    </ul>
 
-    <div class="flex flex-wrap gap-y-2">
+    <div class="grid grid-cols-8 gap-1 md:grid-cols-[repeat(32,minmax(0,1fr))] md:gap-0">
       {#each bitArray as bit, i}
         <button
-          on:click={() => toggleBit(i)}
-          aria-label={getBitLabel(i)}
-          class="
-            w-[3.125%] aspect-[3/4] flex items-center justify-center text-sm font-bold font-mono transition-all border-y border-r first:border-l border-zinc-800
-            active:scale-95 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-zinc-900 focus:z-10
-            {i === 0 ? 'bg-red-500/10 text-red-400 hover:bg-red-500/20 focus:ring-red-500' : ''}
-            {i > 0 && i < 9 ? 'bg-green-500/10 text-green-400 hover:bg-green-500/20 focus:ring-green-500' : ''}
-            {i >= 9 ? 'bg-blue-500/10 text-blue-400 hover:bg-blue-500/20 focus:ring-blue-500' : ''}
-            {bit === 1 ? 'brightness-125 shadow-[inset_0_0_10px_rgba(0,0,0,0.5)]' : 'opacity-50'}
-          "
+          type="button"
+          onclick={() => flip(i)}
+          aria-label={bitLabel(i)}
+          class="min-h-10 md:min-h-0 md:aspect-[3/4] flex items-center justify-center text-sm font-bold font-mono transition-all border border-zinc-800 active:scale-95 focus:outline-none focus-visible:ring-2 focus-visible:z-10 {cellClass[fieldOf(i)]} {bit === 1 ? 'brightness-125 shadow-[inset_0_0_10px_rgba(0,0,0,0.5)]' : 'opacity-50'}"
         >
           {bit}
         </button>
@@ -160,25 +170,26 @@
   <div class="mt-8 grid grid-cols-1 md:grid-cols-3 gap-4 text-xs font-mono border-t border-zinc-800 pt-4">
     <div role="status" aria-live="polite">
       <span class="text-red-400 block mb-1">SIGN BIT</span>
-      <span class="text-zinc-400">{bitArray[0] === 0 ? 'Positive' : 'Negative'} ({bitArray[0]})</span>
+      <span class="text-zinc-400">{info.sign === 0 ? 'Positive' : 'Negative'} ({info.sign})</span>
     </div>
     <div role="status" aria-live="polite">
-      <span class="text-green-400 block mb-1">EXPONENT</span>
-      <span class="text-zinc-400">
-        {#if parseInt(bitArray.slice(1, 9).join(''), 2) === 0}
-          0 (denormalized or zero)
-        {:else if parseInt(bitArray.slice(1, 9).join(''), 2) === 255}
-          255 (infinity or NaN)
-        {:else}
-          2^({parseInt(bitArray.slice(1, 9).join(''), 2)} - 127) = 2^{parseInt(bitArray.slice(1, 9).join(''), 2) - 127}
-        {/if}
-      </span>
+      <span class="text-green-400 block mb-1">EXPONENT FIELD</span>
+      <span class="text-zinc-400">{exponentText}</span>
     </div>
     <div role="status" aria-live="polite">
       <span class="text-blue-400 block mb-1">HEX REPRESENTATION</span>
-      <span class="text-zinc-300">
-        0x{uintView[0].toString(16).toUpperCase().padStart(8, '0')}
-      </span>
+      <span class="text-zinc-300">{info.hex}</span>
+    </div>
+  </div>
+
+  <div class="mt-4 space-y-3 text-xs font-mono border-t border-zinc-800 pt-4">
+    <div>
+      <span class="text-blue-400 block mb-1">SIGNIFICAND</span>
+      <span class="text-zinc-400 break-words">{significandText}</span>
+    </div>
+    <div>
+      <span class="text-emerald-400 block mb-1">VALUE ACTUALLY STORED (EXACT)</span>
+      <span class="text-zinc-300 break-all">{info.exact}</span>
     </div>
   </div>
 </div>

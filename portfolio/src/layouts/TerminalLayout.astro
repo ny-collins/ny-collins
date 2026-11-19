@@ -24,7 +24,7 @@ const { title } = Astro.props;
         </div>
         <div class="flex gap-4">
           <span id="loc-display" class="hover:text-emerald-400 transition-colors cursor-default">LOC: --</span>
-          <span class="hover:text-blue-400 transition-colors cursor-default">LATENCY: <span id="ping">--</span>ms</span>
+          <span class="hover:text-blue-400 transition-colors cursor-default">LOAD: <span id="ping">--</span>ms</span>
         </div>
       </div>
     </header>
@@ -34,7 +34,7 @@ const { title } = Astro.props;
     </main>
 
     <footer class="border-t border-zinc-800 mt-20 py-8 text-center text-xs text-zinc-400 font-mono">
-      <p>ENGINEERED ON CLOUDFLARE EDGE</p>
+      <p>HOSTED ON CLOUDFLARE</p>
       <p class="mt-2 text-zinc-400">© {new Date().getFullYear()} Collins Mwangi. MIT License.</p>
     </footer>
 

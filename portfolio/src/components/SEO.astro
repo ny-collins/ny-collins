@@ -1,67 +1,79 @@
 ---
 interface Props {
+  /** The page's own title. The site name is appended unless `home` is set. */
   title: string;
   description?: string;
+  /** Path (or absolute URL) of the social card. Should be 1200x630. */
   image?: string;
+  imageAlt?: string;
+  /** The homepage: the title stands alone and the Person structured data is emitted. */
+  home?: boolean;
+  /** Keep the page out of search results and skip the canonical link (used by the 404 page). */
+  noindex?: boolean;
 }
+
+const SITE_NAME = 'Collins Mwangi';
+const DEFAULT_DESCRIPTION =
+  'Data Science student at the University of Nairobi, learning how computers, networks and mathematics work from the fundamentals up.';
 
 const {
   title,
-  description = "Data Science student at the University of Nairobi, learning how computers, networks and mathematics work from the fundamentals up.",
-  image = "/og-default.png"
+  description = DEFAULT_DESCRIPTION,
+  image = '/og-default.png',
+  imageAlt = 'Collins Mwangi, Data Science student',
+  home = false,
+  noindex = false,
 } = Astro.props;
 
-const siteBase = (Astro.site ?? new URL("https://collinsmwangi.me")).origin;
-const siteURL = new URL(Astro.url.pathname, siteBase).toString();
-const socialImageURL = new URL(image, siteBase).toString();
+// `site` comes from astro.config.mjs, so the hostname lives in exactly one place.
+const site = Astro.site ?? new URL('https://collinsmwangi.me');
+const fullTitle = home ? title : `${title} | ${SITE_NAME}`;
+const pageURL = new URL(Astro.url.pathname, site).toString();
+const socialImageURL = new URL(image, site).toString();
 
-const structuredData = {
-  "@context": "https://schema.org",
-  "@type": "Person",
-  "name": "Collins Mwangi",
-  "url": siteBase,
-  "sameAs": [
-    "https://github.com/ny-collins",
-    "https://x.com/CollinsMwa206"
-  ],
-  "knowsAbout": [
-    "Data science",
-    "Mathematics",
-    "Computer networking",
-    "Linux",
-    "Web development"
-  ],
-  "affiliation": {
-    "@type": "CollegeOrUniversity",
-    "name": "University of Nairobi"
+const personData = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: SITE_NAME,
+  url: site.origin,
+  sameAs: ['https://github.com/ny-collins', 'https://x.com/CollinsMwa206'],
+  knowsAbout: ['Data science', 'Mathematics', 'Computer networking', 'Linux', 'Web development'],
+  affiliation: {
+    '@type': 'CollegeOrUniversity',
+    name: 'University of Nairobi',
   },
-  "description": description
+  description: DEFAULT_DESCRIPTION,
 };
 ---
 
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<link rel="icon" type="image/x-icon" href="/favicon.ico" />
+<meta name="color-scheme" content="dark" />
+<meta name="theme-color" content="#09090b" />
 <meta name="generator" content={Astro.generator} />
+<link rel="icon" type="image/x-icon" href="/favicon.ico" />
 
-<link rel="canonical" href={siteURL} />
-
-<title>{title} | Collins Mwangi</title>
-<meta name="title" content={`${title} | Collins Mwangi`} />
+<title>{fullTitle}</title>
 <meta name="description" content={description} />
+{noindex ? <meta name="robots" content="noindex" /> : <link rel="canonical" href={pageURL} />}
 
 <meta property="og:type" content="website" />
-<meta property="og:url" content={siteURL} />
-<meta property="og:title" content={title} />
+<meta property="og:site_name" content={SITE_NAME} />
+<meta property="og:url" content={pageURL} />
+<meta property="og:title" content={fullTitle} />
 <meta property="og:description" content={description} />
 <meta property="og:image" content={socialImageURL} />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:alt" content={imageAlt} />
 
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:url" content={siteURL} />
-<meta name="twitter:title" content={title} />
+<meta name="twitter:creator" content="@CollinsMwa206" />
+<meta name="twitter:title" content={fullTitle} />
 <meta name="twitter:description" content={description} />
 <meta name="twitter:image" content={socialImageURL} />
+<meta name="twitter:image:alt" content={imageAlt} />
 
 <link rel="sitemap" href="/sitemap-index.xml" />
 
-<script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
+{home && <script is:inline type="application/ld+json" set:html={JSON.stringify(personData)} />}

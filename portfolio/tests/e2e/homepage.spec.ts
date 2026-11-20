@@ -69,7 +69,6 @@ test.describe('Performance Checks', () => {
     });
 
     await page.goto('/');
-    const relevantErrors = errors.filter(err => !err.includes('System trace failed'));
-    expect(relevantErrors).toHaveLength(0);
+    expect(errors).toEqual([]);
   });
 });

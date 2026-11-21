@@ -4,13 +4,15 @@
   "version": "0.0.1",
   "scripts": {
     "dev": "astro dev",
-    "build": "astro build",
+    "build": "astro build && node scripts/csp.mjs",
     "preview": "astro preview",
     "astro": "astro",
     "generate-og": "node scripts/generate-og.js",
     "test": "vitest",
     "test:watch": "vitest --watch",
     "test:e2e": "playwright test",
+    "test:e2e:pages": "E2E_PAGES=1 playwright test",
+    "deploy": "npm run build && npx wrangler pages deploy dist --project-name portfolio",
     "test:e2e:ui": "playwright test --ui"
   },
   "dependencies": {

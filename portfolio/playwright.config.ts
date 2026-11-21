@@ -1,5 +1,11 @@
 import { defineConfig, devices } from '@playwright/test';
 
+// Normal runs test `astro preview`, which ignores public/_headers.
+// E2E_PAGES=1 (npm run test:e2e:pages) serves dist/ with `wrangler pages dev`, which applies
+// dist/_headers, so the Content-Security-Policy is enforced exactly as on Cloudflare. Build first.
+const pages = !!process.env.E2E_PAGES;
+const baseURL = pages ? 'http://localhost:8788' : 'http://localhost:4321';
+
 export default defineConfig({
   testDir: './tests/e2e',
   fullyParallel: true,
@@ -8,7 +14,7 @@ export default defineConfig({
   workers: process.env.CI ? 1 : undefined,
   reporter: 'html',
   use: {
-    baseURL: 'http://localhost:4321',
+    baseURL,
     trace: 'on-first-retry',
   },
   projects: [
@@ -18,8 +24,8 @@ export default defineConfig({
     },
   ],
   webServer: {
-    command: 'npm run preview',
-    url: 'http://localhost:4321',
+    command: pages ? 'npx wrangler pages dev dist --port 8788' : 'npm run preview',
+    url: baseURL,
     reuseExistingServer: !process.env.CI,
   },
 });

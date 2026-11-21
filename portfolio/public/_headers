@@ -1,19 +1,18 @@
 # Cloudflare Pages response headers
 # Docs: https://developers.cloudflare.com/pages/configuration/headers/
+#
+# The two __..._HASHES__ tokens in the Content-Security-Policy line are replaced after every build by
+# scripts/csp.mjs, which hashes each inline <script> and <style> that Astro writes into dist/.
+# Always build with `npm run build` (not `astro build` alone) before deploying.
+# Limits: 100 rules, 2,000 characters per line (the build step checks the second).
 
 /*
-  # Core security headers
-  Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
+  Strict-Transport-Security: max-age=31536000; includeSubDomains
   X-Content-Type-Options: nosniff
   Referrer-Policy: strict-origin-when-cross-origin
   Permissions-Policy: geolocation=(), camera=(), microphone=(), payment=(), usb=()
+  Content-Security-Policy: default-src 'self'; base-uri 'none'; form-action 'none'; frame-ancestors 'none'; object-src 'none'; img-src 'self' data:; font-src 'self' data:; connect-src 'self'; manifest-src 'self'; script-src 'self' __SCRIPT_HASHES__; style-src 'self' __STYLE_HASHES__; upgrade-insecure-requests
 
-  # CORS (override the current wildcard; tighten to your canonical origin)
-  Access-Control-Allow-Origin: https://collinsmwangi.me
-
-  # CSP (keeps your current inline allowances, but adds low-risk hardening)
-  Content-Security-Policy: default-src 'self'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; object-src 'none'; img-src 'self' data: https:; font-src 'self' data:; connect-src 'self' https://www.cloudflare.com; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; upgrade-insecure-requests; block-all-mixed-content
-
-# Cache static build assets aggressively (Astro outputs fingerprinted assets here)
+# Build output is fingerprinted, so it can be cached for a year
 /_astro/*
   Cache-Control: public, max-age=31536000, immutable
